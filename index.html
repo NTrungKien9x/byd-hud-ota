@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BYD HUD - Nạp Firmware &amp; Cập Nhật Online</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <style>
+    :root {
+      --bg: #0b1018;
+      --card: #131b27;
+      --border: #243247;
+      --accent: #00dcff;
+      --good: #28e66e;
+      --warn: #ffb000;
+      --text: #f1f5f9;
+      --dim: #94a3b8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top, #132238 0%, var(--bg) 60%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+    .wrap { max-width: 820px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 24px; }
+    .badge {
+      display: inline-block;
+      background: rgba(0, 220, 255, 0.14);
+      border: 1px solid rgba(0, 220, 255, 0.45);
+      color: var(--accent);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: -0.3px; }
+    .sub { color: var(--dim); font-size: 14px; margin: 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+    .card h2 { margin: 0 0 6px; font-size: 19px; color: var(--accent); }
+    .sku { font-size: 13px; color: var(--warn); font-weight: 600; margin-bottom: 12px; }
+    .desc { font-size: 14px; color: var(--dim); line-height: 1.5; margin: 0 0 16px; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .btn-flash {
+      background: linear-gradient(135deg, #00dcff, #0095ff);
+      color: #031018;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-flash:hover { filter: brightness(1.08); }
+    .btn-dl {
+      display: inline-block;
+      background: #1d293b;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .btn-dl:hover { border-color: var(--accent); color: var(--accent); }
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-top: 16px;
+    }
+    .info-box h3 { margin: 0 0 10px; font-size: 16px; color: var(--good); }
+    .info-box ol, .info-box ul { margin: 0; padding-left: 20px; color: var(--dim); line-height: 1.65; font-size: 14px; }
+    code {
+      background: #0c131d;
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 13px;
+    }
+    .ota-url {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .ota-url input {
+      flex: 1;
+      min-width: 220px;
+      background: #0c131d;
+      color: var(--good);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-family: monospace;
+      font-size: 13px;
+    }
+    footer { text-align: center; margin-top: 28px; color: var(--dim); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge" id="verBadge">BYD HUD ESP32-S3 • v2.60</div>
+      <h1>Nạp Firmware &amp; Cập Nhật Online</h1>
+      <p class="sub" id="verNotes">Hỗ trợ màn tròn 1.8" JC3636W518C (360×360) • BYD EV &amp; Xe Xăng (Spark, Fadil, Honda, Toyota) • Gofa, Waze, VietMap, xADAS</p>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Bản V1 — Màn hình đời 2509</h2>
+        <div class="sku">SKU: 10120005 (2509) • Driver V1 (216 lệnh)</div>
+        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120005 (2509)</b>. Nạp trực tiếp qua cáp USB-C trên Chrome / Edge.</p>
+        <div class="btn-row">
+          <esp-web-install-button manifest="manifest_v1.json">
+            <button slot="activate" class="btn-flash">⚡ NẠP BẢN V1 QUA USB</button>
+            <span slot="unsupported" style="color:#ff5252;font-size:13px">Hãy mở trang này bằng Chrome hoặc Edge trên máy tính.</span>
+          </esp-web-install-button>
+          <a class="btn-dl" href="firmware/byd_hud_v1.bin" download>Tải .bin V1</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Bản V2 — Màn hình đời 2636</h2>
+        <div class="sku">SKU: 10120003 (2636) • Driver V2 (184 lệnh)</div>
+        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120003 (2636)</b>. Nạp trực tiếp qua cáp USB-C trên Chrome / Edge.</p>
+        <div class="btn-row">
+          <esp-web-install-button manifest="manifest_v2.json">
+            <button slot="activate" class="btn-flash">⚡ NẠP BẢN V2 QUA USB</button>
+            <span slot="unsupported" style="color:#ff5252;font-size:13px">Hãy mở trang này bằng Chrome hoặc Edge trên máy tính.</span>
+          </esp-web-install-button>
+          <a class="btn-dl" href="firmware/byd_hud_v2.bin" download>Tải .bin V2</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h3>1. Hướng dẫn nạp Firmware lần đầu qua USB (Web Flasher)</h3>
+      <ol>
+        <li>Mở trang web này trên máy tính bằng <b>Google Chrome</b> hoặc <b>Microsoft Edge</b>.</li>
+        <li>Cắm cáp <b>USB-C truyền dữ liệu</b> từ máy tính vào màn hình HUD (nếu máy chưa nhận cổng COM, giữ nút BOOT rồi cắm cáp).</li>
+        <li>Chọn đúng bản <b>V1 (SKU 10120005)</b> hoặc <b>V2 (SKU 10120003)</b> theo tem trên hộp rồi bấm <b>NẠP QUA USB</b> → chọn cổng COM ESP32-S3 → Install.</li>
+        <li>Chờ nạp xong 100%, HUD sẽ tự khởi động lại với đầy đủ bootloader, phân vùng OTA 16MB và chương trình mới nhất.</li>
+      </ol>
+    </div>
+
+    <div class="info-box">
+      <h3>2. Hướng dẫn cập nhật Online không cần cáp (WiFi OTA)</h3>
+      <ol>
+        <li>Vuốt từ mép trên màn HUD xuống → bật <b>WiFi</b> và kết nối HUD với WiFi 2.4GHz có Internet (qua cổng <code>http://192.168.4.1</code>).</li>
+        <li>Mở trang quản trị HUD trên điện thoại theo địa chỉ IP hiện trên ô WiFi của HUD.</li>
+        <li>Tại mục <b>Cập nhật Firmware Online (GitHub OTA)</b>, kiểm tra đường dẫn OTA trùng với link dưới đây:</li>
+      </ol>
+      <div class="ota-url">
+        <input id="otaUrlBox" type="text" readonly>
+        <button class="btn-dl" type="button" onclick="copyOtaUrl()">Sao chép Link OTA</button>
+      </div>
+      <ol start="4" style="margin-top:10px">
+        <li>Bấm <b>KIỂM TRA BẢN MỚI</b> → <b>CẬP NHẬT ONLINE</b>. HUD tự chọn đúng file V1/V2 theo mạch, hiện vòng tiến trình 0–100% và tự khởi động lại!</li>
+      </ol>
+    </div>
+
+    <footer>
+      BYD HUD Firmware Portal • ESP32-S3 16MB OPI PSRAM • Powered by GitHub Pages &amp; ESP Web Tools
+    </footer>
+  </div>
+
+  <script>
+    const baseUrl = window.location.href.replace(/\/[^\/]*$/, "");
+    document.getElementById("otaUrlBox").value = baseUrl;
+    function copyOtaUrl() {
+      const inp = document.getElementById("otaUrlBox");
+      inp.select();
+      navigator.clipboard?.writeText(inp.value);
+    }
+    fetch("version.json?t=" + Date.now())
+      .then(r => r.json())
+      .then(d => {
+        if (d.version) document.getElementById("verBadge").textContent = "BYD HUD ESP32-S3 • Phiên bản mới nhất v" + d.version;
+        if (d.notes) document.getElementById("verNotes").textContent = d.notes;
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

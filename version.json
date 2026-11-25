@@ -1,6 +1,6 @@
 {
-  "version": "2.64",
-  "notes": "Giao diện Ngày/Đêm: bỏ số tốc độ giữa, thay bằng biển hạn chế tốc độ phóng to tối đa (146..172px) không đè chồng thành phần khác; bổ sung ô tô 1:1 ảnh mẫu và xi nhan mũi tên trong giao diện Tổng hợp",
+  "version": "1.0",
+  "notes": "Khử răng cưa toàn màn hình & số biển báo; tách 3 Form kết nối VietMap/Waze/GOFA đầy đủ chỉ dẫn, làn đường, biển báo, sự kiện, POI; chống giật tốc độ; tên đường chạy phải->trái; mũi tên chỉ hướng AR không chấm tròn; Giao diện 3 thêm km còn đi được dưới %pin",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

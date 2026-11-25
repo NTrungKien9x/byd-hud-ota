@@ -1,6 +1,6 @@
 {
-  "version": "2.60",
-  "notes": "Fix treo khi ngắt VietMap/BLE, vòng cung mượt 60FPS, dẫn đường Gofa 0x3038, OBD BYD + xe xăng (Spark/Fadil/Honda/Toyota), OTA GitHub",
+  "version": "2.62",
+  "notes": "Giao diện tổng hợp: hiển thị 1 số đang chạy (P/R/N/D) nhỏ gọn sát đỉnh vòng cung, phóng to biển giới hạn tốc độ (100px), bố trí mũi tên điều hướng & phân làn hai bên và trên tên đường không đè chồng",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

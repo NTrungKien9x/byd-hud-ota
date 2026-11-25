@@ -1,6 +1,6 @@
 {
-  "version": "2.63",
-  "notes": "Thêm giao diện Tổng hợp mới (2 cột sát mép Pin EV / Mức xăng xe xăng & Tốc độ, đèn cốt/pha, xi nhan vàng, tên đường + mũi tên phân làn theo app, 2 biển cảnh báo hai bên tự ẩn tạm % pin/xăng, xADAS trên đầu ô tô, Cruise/LIM và 3 icon thu nhỏ BT/WiFi/OBD)",
+  "version": "2.64",
+  "notes": "Giao diện Ngày/Đêm: bỏ số tốc độ giữa, thay bằng biển hạn chế tốc độ phóng to tối đa (146..172px) không đè chồng thành phần khác; bổ sung ô tô 1:1 ảnh mẫu và xi nhan mũi tên trong giao diện Tổng hợp",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

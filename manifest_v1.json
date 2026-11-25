@@ -1,6 +1,6 @@
 {
   "name": "BYD HUD - Màn V1 (SKU 10120005 / 2509)",
-  "version": "2.63",
+  "version": "2.64",
   "new_install_prompt_erase": false,
   "builds": [
     {

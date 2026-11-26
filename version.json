@@ -1,6 +1,6 @@
 {
-  "version": "1.002",
-  "notes": "v1.002: Tích hợp Xi nhan Trái/Phải thực tế từ CS 725 (220003); sửa đầy đủ trang WiFi & /rx (Content-Length chuẩn); sửa lỗi mất PRND (tự dự phòng 7E0/7E2) & lỗi mất quét OBD khi mở /rx; tối ưu chuyển header đơn khung tăng tốc OBD; nút chụp nhanh 0.4s Đèn Cần gạt CS 725",
+  "version": "1.004",
+  "notes": "v1.004: Hoàn thiện giải mã Đèn chiếu gần (Cos - Auto trời tối 0xFE / Demi-Cos 0xFD), Đèn chiếu xa (Pha - 0xDF/0xEF) và Xi nhan Trái/Phải tốc độ cao (~0.2s) trực tiếp từ CS 725 220003",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

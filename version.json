@@ -1,6 +1,6 @@
 {
-  "version": "1.004",
-  "notes": "v1.004: Hoàn thiện giải mã Đèn chiếu gần (Cos - Auto trời tối 0xFE / Demi-Cos 0xFD), Đèn chiếu xa (Pha - 0xDF/0xEF) và Xi nhan Trái/Phải tốc độ cao (~0.2s) trực tiếp từ CS 725 220003",
+  "version": "1.005",
+  "notes": "v1.005: Sửa triệt để mất tốc độ OBD & số PRND (khôi phục ATCRA + lịch polling cân bằng), chống xung đột đa app BLE (Bản đồ + xADAS tự phục hồi không cần rút nguồn), giảm trễ tốc độ GPS ~1-2s xuống tức thì, ẩn mũi tên xi nhan chờ khi tắt & hiển thị đồng thời Xi nhan + Phanh/AutoHold + Cos/Pha, bổ sung OBD xe xăng + táp 2 lần xem Nước/Bình",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

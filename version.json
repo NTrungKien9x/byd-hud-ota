@@ -1,6 +1,6 @@
 {
-  "version": "1.001",
-  "notes": "AutoHold (A) + Phanh tay điện tử (P) đỏ từ IPB 782; phóng to hàng xi nhan/đèn/AutoHold; 2 cột vòng cung thích ứng (Không OBD=Tốc độ, Xe xăng=RPM, Xe điện=% Pin); bộ lọc tốc độ mượt chống nhảy; tách WebServer sang Core 0 hết treo HUD; nút dò an toàn Màn ODO INS 723 khi đỗ P",
+  "version": "1.002",
+  "notes": "v1.002: Tích hợp Xi nhan Trái/Phải thực tế từ CS 725 (220003); sửa đầy đủ trang WiFi & /rx (Content-Length chuẩn); sửa lỗi mất PRND (tự dự phòng 7E0/7E2) & lỗi mất quét OBD khi mở /rx; tối ưu chuyển header đơn khung tăng tốc OBD; nút chụp nhanh 0.4s Đèn Cần gạt CS 725",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

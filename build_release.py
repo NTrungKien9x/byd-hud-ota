@@ -24,11 +24,11 @@ def sync_v1_to_v2():
         src = f.read()
     src_v2 = re.sub(r"(#define\s+LCD_DRIVER_DEFAULT\s+)0\b", r"\g<1>1", src, count=1)
     assert "#define LCD_DRIVER_DEFAULT     1" in src_v2 or re.search(r"#define\s+LCD_DRIVER_DEFAULT\s+1\b", src_v2)
-    with open(os.path.join(SKETCH_V2, "HUD_BYD_Dolphin_V2.ino"), "w", encoding="utf-8") as f:
+    with open(os.path.join(SKETCH_V2, "HUD_BYD_Dolphin_V2.ino"), "w", encoding="utf-8", newline="\n") as f:
         f.write(src_v2)
     m = re.search(r'#define\s+BLE_HUD_FW_STR\s+"([^"]+)"', src)
-    ver = m.group(1) if m else "2.60"
-    print(f"[1/4] Synced V1 -> V2 ({len(headers)} headers, fw=v{ver})")
+    ver = m.group(1) if m else "1.0"
+    print(f"[1/4] Synced V1 -> V2 ({len(headers)} headers, fw=v{ver})", flush=True)
     return ver
 
 def compile_variant(sketch_dir, out_bin_name, copy_boot_parts=False):
@@ -50,7 +50,7 @@ def compile_variant(sketch_dir, out_bin_name, copy_boot_parts=False):
         ]
         r = None
         for attempt in range(1, 4):
-            print(f"      Compiling {ino_base} (attempt {attempt}/3)...")
+            print(f"      Compiling {ino_base} (attempt {attempt}/3)...", flush=True)
             r = subprocess.run(cmd, capture_output=True, text=True, env=env)
             if r.returncode == 0:
                 break
@@ -58,8 +58,8 @@ def compile_variant(sketch_dir, out_bin_name, copy_boot_parts=False):
             if ".ino:" in err_txt or "hud_" in err_txt:
                 break
         if r.returncode != 0:
-            print(r.stdout)
-            print(r.stderr)
+            print(r.stdout, flush=True)
+            print(r.stderr, flush=True)
             sys.exit(r.returncode)
         app_bin = os.path.join(td, f"{ino_base}.ino.bin")
         shutil.copy2(app_bin, os.path.join(FW_DIR, out_bin_name))
@@ -69,7 +69,7 @@ def compile_variant(sketch_dir, out_bin_name, copy_boot_parts=False):
             shutil.copy2(BOOT_APP0, os.path.join(FW_DIR, "boot_app0.bin"))
         sz = os.path.getsize(os.path.join(FW_DIR, out_bin_name))
         sha = hashlib.sha256(open(os.path.join(FW_DIR, out_bin_name), "rb").read()).hexdigest()[:12]
-        print(f"      OK: firmware/{out_bin_name} ({sz:,} bytes, sha256={sha}...)")
+        print(f"      OK: firmware/{out_bin_name} ({sz:,} bytes, sha256={sha}...)", flush=True)
 
 def update_json_version(ver):
     for fn in ("version.json", "manifest_v1.json", "manifest_v2.json"):

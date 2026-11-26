@@ -19,6 +19,6 @@ Thư mục này đã chứa sẵn toàn bộ trang web nạp USB (ESP Web Tools)
      `https://ntrungkien9x.github.io/byd-hud-ota/`
 
 ## Cách phát hành bản cập nhật mới sau này
-1. Sửa code trong Arduino sketch `HUD_BYD_Dolphin`, tăng số phiên bản `#define BLE_HUD_FW_STR "2.61"`.
-2. Chạy đúp file `build_release.bat` → tự động đồng bộ V1/V2, biên dịch 2 file `.bin` và cập nhật `version.json`.
-3. Tải đè `version.json`, `manifest_v1.json`, `manifest_v2.json` và thư mục `firmware/` lên GitHub → mọi HUD kết nối WiFi chỉ cần bấm **CẬP NHẬT ONLINE** là tự nâng cấp!
+1. Sửa code trong Arduino sketch `HUD_BYD_Dolphin` (chỉnh `#define BLE_HUD_FW_STR` nếu muốn tăng số phiên bản, hiện tại là `"1.0"`).
+2. Chạy đúp file `build_release.bat` → tự động đồng bộ V1/V2, biên dịch 2 file `.bin` và cập nhật `version.json`, `manifest_v1.json`, `manifest_v2.json`.
+3. Tải đè `version.json`, `manifest_v1.json`, `manifest_v2.json`, `index.html` và thư mục `firmware/` lên GitHub → mọi HUD kết nối WiFi chỉ cần mở **Menu nhanh** trên HUD chạm **CẬP NHẬT OTA** (hoặc bấm **CẬP NHẬT ONLINE** trên trang cấu hình WiFi) là tự nâng cấp!

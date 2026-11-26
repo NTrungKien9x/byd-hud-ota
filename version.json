@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "notes": "Khử răng cưa toàn màn hình & số biển báo; tách 3 Form kết nối VietMap/Waze/GOFA đầy đủ chỉ dẫn, làn đường, biển báo, sự kiện, POI; chống giật tốc độ; tên đường chạy phải->trái; mũi tên chỉ hướng AR không chấm tròn; Giao diện 3 thêm km còn đi được dưới %pin",
+  "notes": "VietMap Live qua bo ESP32 phu UART (mui ten chi huong + phan lan dong thoi); chuan hoa toc do OBD UDS & uu tien OBD khi da noi; chong giat toc do GPS; nut CAP NHAT OTA online ngay trong Menu nhanh khi da noi WiFi",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "notes": "VietMap Live qua bo ESP32 phụ UART (mũi tên chỉ hướng + phân làn đồng thời); chuẩn hóa tốc độ OBD UDS & ưu tiên OBD khi đã nối; chống giật tốc độ GPS; nút CẬP NHẬT OTA online ngay trong Menu nhanh khi đã nối WiFi",
+  "notes": "VietMap Live qua bo ESP32 phụ UART (mũi tên chỉ hướng + phân làn đồng thời); sửa hiển thị xADAS phía trước ô tô Giao diện 3 (hộp thư riêng chống rớt gói + thước khoảng cách + sóng radar); chuẩn hóa tốc độ OBD UDS; nút CẬP NHẬT OTA trong Menu nhanh",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

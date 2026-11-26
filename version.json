@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "notes": "VietMap Live qua bo ESP32 phụ UART (mũi tên chỉ hướng + phân làn đồng thời); sửa hiển thị xADAS phía trước ô tô Giao diện 3 (hộp thư riêng chống rớt gói + thước khoảng cách + sóng radar); chuẩn hóa tốc độ OBD UDS; nút CẬP NHẬT OTA trong Menu nhanh",
+  "version": "1.001",
+  "notes": "AutoHold (A) + Phanh tay điện tử (P) đỏ từ IPB 782; phóng to hàng xi nhan/đèn/AutoHold; 2 cột vòng cung thích ứng (Không OBD=Tốc độ, Xe xăng=RPM, Xe điện=% Pin); bộ lọc tốc độ mượt chống nhảy; tách WebServer sang Core 0 hết treo HUD; nút dò an toàn Màn ODO INS 723 khi đỗ P",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

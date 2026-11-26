@@ -1,3 +1,4 @@
+from decimal import Decimal
 import hashlib
 import json
 import os
@@ -80,9 +81,35 @@ def update_json_version(ver):
             with open(p, "w", encoding="utf-8") as f:
                 json.dump(obj, f, ensure_ascii=False, indent=2)
                 f.write("\n")
+    idx_p = os.path.join(WEB_DIR, "index.html")
+    if os.path.exists(idx_p):
+        with open(idx_p, "r", encoding="utf-8") as f:
+            html = f.read()
+        html2 = re.sub(r'(id="verBadge">BYD HUD ESP32-S3 • v)[^<]+(<)', rf'\g<1>{ver}\g<2>', html)
+        if html2 != html:
+            with open(idx_p, "w", encoding="utf-8", newline="\n") as f:
+                f.write(html2)
+
+def bump_fw_version(step="0.001"):
+    ino_path = os.path.join(SKETCH_V1, "HUD_BYD_Dolphin.ino")
+    with open(ino_path, "r", encoding="utf-8") as f:
+        src = f.read()
+    m = re.search(r'(#define\s+BLE_HUD_FW_STR\s+")([^"]+)(")', src)
+    if not m:
+        raise RuntimeError("BLE_HUD_FW_STR not found in HUD_BYD_Dolphin.ino")
+    cur = Decimal(m.group(2))
+    nxt = (cur + Decimal(step)).quantize(Decimal("0.001"))
+    nxt_str = f"{nxt:.3f}"
+    src2 = src[:m.start(2)] + nxt_str + src[m.end(2):]
+    with open(ino_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(src2)
+    print(f"[0/4] Bumped BLE_HUD_FW_STR: v{m.group(2)} -> v{nxt_str}", flush=True)
+    return nxt_str
 
 if __name__ == "__main__":
     os.makedirs(FW_DIR, exist_ok=True)
+    if "--bump" in sys.argv:
+        bump_fw_version("0.001")
     ver = sync_v1_to_v2()
     print("[2/4] Building V1 (SKU 10120005 / 2509)...")
     compile_variant(SKETCH_V1, "byd_hud_v1.bin", copy_boot_parts=True)

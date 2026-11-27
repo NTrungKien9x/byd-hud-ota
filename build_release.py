@@ -73,7 +73,8 @@ def compile_variant(sketch_dir, out_bin_name, copy_boot_parts=False):
         print(f"      OK: firmware/{out_bin_name} ({sz:,} bytes, sha256={sha}...)", flush=True)
 
 def update_json_version(ver):
-    for fn in ("version.json", "manifest_v1.json", "manifest_v2.json"):
+    for fn in ("version.json", "manifest_v1.json", "manifest_v2.json",
+               "manifest_v1_update.json", "manifest_v2_update.json"):
         p = os.path.join(WEB_DIR, fn)
         if os.path.exists(p):
             obj = json.load(open(p, "r", encoding="utf-8"))
@@ -110,11 +111,18 @@ if __name__ == "__main__":
     os.makedirs(FW_DIR, exist_ok=True)
     if "--bump" in sys.argv:
         bump_fw_version("0.001")
+    full_mode = "--full" in sys.argv
+    boot_missing = not all(
+        os.path.exists(os.path.join(FW_DIR, f))
+        for f in ("bootloader.bin", "partitions.bin", "boot_app0.bin")
+    )
+    copy_boot = full_mode or boot_missing
     ver = sync_v1_to_v2()
-    print("[2/4] Building V1 (SKU 10120005 / 2509)...")
-    compile_variant(SKETCH_V1, "byd_hud_v1.bin", copy_boot_parts=True)
-    print("[3/4] Building V2 (SKU 10120003 / 2636)...")
+    mode_tag = "FULL (kem bootloader/partitions)" if copy_boot else "OTA-APP-ONLY (chi file app .bin, giu nguyen cac phan vung)"
+    print(f"[2/4] Building V1 (SKU 10120005 / 2509) [{mode_tag}]...")
+    compile_variant(SKETCH_V1, "byd_hud_v1.bin", copy_boot_parts=copy_boot)
+    print(f"[3/4] Building V2 (SKU 10120003 / 2636) [{mode_tag}]...")
     compile_variant(SKETCH_V2, "byd_hud_v2.bin", copy_boot_parts=False)
-    print("[4/4] Updating manifest & version.json...")
+    print("[4/4] Updating manifests (Full + Update-Only) & version.json...")
     update_json_version(ver)
-    print(f"DONE! Ready to upload {WEB_DIR} to GitHub Pages (v{ver}).")
+    print(f"DONE! Ready to upload {WEB_DIR} to GitHub Pages (v{ver}, {mode_tag}).")

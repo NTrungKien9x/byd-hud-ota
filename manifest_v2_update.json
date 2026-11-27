@@ -1,0 +1,20 @@
+{
+  "name": "BYD HUD - Cập nhật nhanh V2 (Chỉ App, giữ nguyên cài đặt)",
+  "version": "1.012",
+  "new_install_prompt_erase": false,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "firmware/boot_app0.bin",
+          "offset": 57344
+        },
+        {
+          "path": "firmware/byd_hud_v2.bin",
+          "offset": 65536
+        }
+      ]
+    }
+  ]
+}

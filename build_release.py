@@ -32,7 +32,28 @@ def sync_v1_to_v2():
     print(f"[1/4] Synced V1 -> V2 ({len(headers)} headers, fw=v{ver})", flush=True)
     return ver
 
-def compile_variant(sketch_dir, out_bin_name, copy_boot_parts=False):
+def build_merged_full_bin(bootloader_path, partitions_path, boot_app0_path, app_path, out_full_path):
+    parts = [
+        (0x0000, bootloader_path),
+        (0x8000, partitions_path),
+        (0xE000, boot_app0_path),
+        (0x10000, app_path),
+    ]
+    total_sz = 0
+    blobs = []
+    for off, path in parts:
+        data = open(path, "rb").read()
+        end = off + len(data)
+        if end > total_sz:
+            total_sz = end
+        blobs.append((off, data))
+    buf = bytearray(b"\xFF" * total_sz)
+    for off, data in blobs:
+        buf[off:off + len(data)] = data
+    with open(out_full_path, "wb") as f:
+        f.write(buf)
+
+def compile_variant(sketch_dir, ota_bin_name, full_bin_name, copy_boot_parts=True):
     ino_base = os.path.basename(sketch_dir)
     build_dir = os.path.join(tempfile.gettempdir(), f"byd_build_{ino_base}")
     os.makedirs(build_dir, exist_ok=True)
@@ -63,14 +84,24 @@ def compile_variant(sketch_dir, out_bin_name, copy_boot_parts=False):
             print(r.stderr, flush=True)
             sys.exit(r.returncode)
         app_bin = os.path.join(td, f"{ino_base}.ino.bin")
-        shutil.copy2(app_bin, os.path.join(FW_DIR, out_bin_name))
+        bl_bin = os.path.join(td, f"{ino_base}.ino.bootloader.bin")
+        pt_bin = os.path.join(td, f"{ino_base}.ino.partitions.bin")
+
+        ota_out = os.path.join(FW_DIR, ota_bin_name)
+        full_out = os.path.join(FW_DIR, full_bin_name)
+        shutil.copy2(app_bin, ota_out)
         if copy_boot_parts:
-            shutil.copy2(os.path.join(td, f"{ino_base}.ino.bootloader.bin"), os.path.join(FW_DIR, "bootloader.bin"))
-            shutil.copy2(os.path.join(td, f"{ino_base}.ino.partitions.bin"), os.path.join(FW_DIR, "partitions.bin"))
+            shutil.copy2(bl_bin, os.path.join(FW_DIR, "bootloader.bin"))
+            shutil.copy2(pt_bin, os.path.join(FW_DIR, "partitions.bin"))
             shutil.copy2(BOOT_APP0, os.path.join(FW_DIR, "boot_app0.bin"))
-        sz = os.path.getsize(os.path.join(FW_DIR, out_bin_name))
-        sha = hashlib.sha256(open(os.path.join(FW_DIR, out_bin_name), "rb").read()).hexdigest()[:12]
-        print(f"      OK: firmware/{out_bin_name} ({sz:,} bytes, sha256={sha}...)", flush=True)
+        build_merged_full_bin(bl_bin, pt_bin, BOOT_APP0, app_bin, full_out)
+
+        sz_ota = os.path.getsize(ota_out)
+        sha_ota = hashlib.sha256(open(ota_out, "rb").read()).hexdigest()[:12]
+        sz_full = os.path.getsize(full_out)
+        sha_full = hashlib.sha256(open(full_out, "rb").read()).hexdigest()[:12]
+        print(f"      OK OTA : firmware/{ota_bin_name} ({sz_ota:,} bytes, sha256={sha_ota}...)", flush=True)
+        print(f"      OK FULL: firmware/{full_bin_name} ({sz_full:,} bytes, sha256={sha_full}...)", flush=True)
 
 def update_json_version(ver):
     for fn in ("version.json", "manifest_v1.json", "manifest_v2.json"):
@@ -110,18 +141,11 @@ if __name__ == "__main__":
     os.makedirs(FW_DIR, exist_ok=True)
     if "--bump" in sys.argv:
         bump_fw_version("0.001")
-    full_mode = "--full" in sys.argv
-    boot_missing = not all(
-        os.path.exists(os.path.join(FW_DIR, f))
-        for f in ("bootloader.bin", "partitions.bin", "boot_app0.bin")
-    )
-    copy_boot = full_mode or boot_missing
     ver = sync_v1_to_v2()
-    mode_tag = "FULL (USB + OTA)" if copy_boot else "OTA-ONLY (chi file *_ota.bin, giu nguyen bootloader/partitions)"
-    print(f"[2/4] Building V1 (SKU 10120005 / 2509) [{mode_tag}]...")
-    compile_variant(SKETCH_V1, "byd_hud_v1_ota.bin", copy_boot_parts=copy_boot)
-    print(f"[3/4] Building V2 (SKU 10120003 / 2636) [{mode_tag}]...")
-    compile_variant(SKETCH_V2, "byd_hud_v2_ota.bin", copy_boot_parts=False)
+    print("[2/4] Building V1 (SKU 10120005 / 2509) [FULL + OTA]...")
+    compile_variant(SKETCH_V1, "byd_hud_v1_ota.bin", "byd_hud_v1_full.bin", copy_boot_parts=True)
+    print("[3/4] Building V2 (SKU 10120003 / 2636) [FULL + OTA]...")
+    compile_variant(SKETCH_V2, "byd_hud_v2_ota.bin", "byd_hud_v2_full.bin", copy_boot_parts=False)
     print("[4/4] Updating manifest & version.json...")
     update_json_version(ver)
-    print(f"DONE! Ready to upload {WEB_DIR} to GitHub Pages (v{ver}, {mode_tag}).")
+    print(f"DONE! Ready to upload {WEB_DIR} to GitHub Pages (v{ver}, FULL + OTA).")

@@ -1,6 +1,6 @@
 {
   "version": "1.012",
-  "notes": "v1.012: Sửa triệt để lỗi bấm OTA bị văng khởi động lại ở bước giải phóng RAM — thay cơ chế tắt NimBLE nóng bằng Clean OTA Boot Mode (lưu cờ NVS 1 lần, tự xóa trước khi nối WiFi chống boot-loop, khởi động sạch không bật BLE/Web/UART dư ~220KB Internal DRAM cho HTTPS OTA ăn ngay lần bấm đầu tiên) + rút ngắn thời gian khởi động HUD nhanh hơn 2.75 giây khi bật máy xe",
+  "notes": "",
   "v1": "firmware/byd_hud_v1_ota.bin",
   "v2": "firmware/byd_hud_v2_ota.bin"
 }

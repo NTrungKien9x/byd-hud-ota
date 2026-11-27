@@ -195,8 +195,7 @@
     fetch("version.json?t=" + Date.now())
       .then(r => r.json())
       .then(d => {
-        if (d.version) document.getElementById("verBadge").textContent = "BYD HUD ESP32-S3 • Phiên bản mới nhất v" + d.version;
-        if (d.notes) document.getElementById("verNotes").textContent = d.notes;
+        if (d.version) document.getElementById("verBadge").textContent = "BYD HUD ESP32-S3 • Phiên bản v" + d.version;
       })
       .catch(() => {});
   </script>

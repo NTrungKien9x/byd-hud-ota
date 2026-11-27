@@ -1,6 +1,6 @@
 {
   "name": "BYD HUD - Màn V2 (SKU 10120003 / 2636)",
-  "version": "1.013",
+  "version": "1.014",
   "new_install_prompt_erase": false,
   "builds": [
     {

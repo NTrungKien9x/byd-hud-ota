@@ -1,6 +1,6 @@
 {
-  "version": "1.006",
-  "notes": "v1.006: Tự reset HUD về trạng thái chờ khi app ngắt kết nối (GOFA/Waze/VM), tăng tốc bắt sóng xADAS khi OBD nối trước, tốc độ GPS thực 0ms trễ cho VietMap/GOFA/Waze, cân chuẩn tốc độ OBD sát ODO & hết trễ, sửa lịch AutoHold/EPB (hết bị đói), thay icon Đèn Auto xám/xanh lá, ẩn PRND & phóng to số tốc độ khi không nối OBD",
+  "version": "1.007",
+  "notes": "v1.007: Ẩn hoàn toàn hàng chờ P R N D khi bật nguồn / chưa có tín hiệu số thực từ OBD trên cả 3 giao diện (Unified, EV Dash, Classic) và tự phóng to số tốc độ; giữ toàn bộ bản vá v1.006",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

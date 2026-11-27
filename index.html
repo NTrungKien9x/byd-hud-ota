@@ -120,7 +120,7 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="badge" id="verBadge">BYD HUD ESP32-S3 • v1.019</div>
+      <div class="badge" id="verBadge">BYD HUD ESP32-S3 • v1.020</div>
       <h1>Nạp Firmware &amp; Cập Nhật Online</h1>
       <p class="sub" id="verNotes">Hỗ trợ màn tròn 1.8" JC3636W518C (360×360) • BYD EV &amp; Xe Xăng (Spark, Fadil, Honda, Toyota) • Gofa, Waze, VietMap, xADAS</p>
     </header>
@@ -129,28 +129,24 @@
       <div class="card">
         <h2>Bản V1 — Màn hình đời 2509</h2>
         <div class="sku">SKU: 10120005 (2509) • Driver V1 (216 lệnh)</div>
-        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120005 (2509)</b>. Nạp <b>Full</b> qua cáp USB-C trên Chrome / Edge, hoặc tải file <b>OTA</b> để cập nhật không xóa cài đặt.</p>
+        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120005 (2509)</b>. Cập nhật / nạp <b>Full</b> trực tiếp qua cáp USB-C trên Chrome hoặc Edge.</p>
         <div class="btn-row">
           <esp-web-install-button manifest="manifest_v1.json">
-            <button slot="activate" class="btn-flash">⚡ NẠP FULL BẢN V1 QUA USB</button>
+            <button slot="activate" class="btn-flash">⚡ CẬP NHẬT BẢN V1 QUA USB</button>
             <span slot="unsupported" style="color:#ff5252;font-size:13px">Hãy mở trang này bằng Chrome hoặc Edge trên máy tính.</span>
           </esp-web-install-button>
-          <a class="btn-dl" href="firmware/byd_hud_v1_full.bin" download>⬇ Tải file FULL V1</a>
-          <a class="btn-dl" href="firmware/byd_hud_v1_ota.bin" download>⬇ Tải file OTA V1</a>
         </div>
       </div>
 
       <div class="card">
         <h2>Bản V2 — Màn hình đời 2636</h2>
         <div class="sku">SKU: 10120003 (2636) • Driver V2 (184 lệnh)</div>
-        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120003 (2636)</b>. Nạp <b>Full</b> qua cáp USB-C trên Chrome / Edge, hoặc tải file <b>OTA</b> để cập nhật không xóa cài đặt.</p>
+        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120003 (2636)</b>. Cập nhật / nạp <b>Full</b> trực tiếp qua cáp USB-C trên Chrome hoặc Edge.</p>
         <div class="btn-row">
           <esp-web-install-button manifest="manifest_v2.json">
-            <button slot="activate" class="btn-flash">⚡ NẠP FULL BẢN V2 QUA USB</button>
+            <button slot="activate" class="btn-flash">⚡ CẬP NHẬT BẢN V2 QUA USB</button>
             <span slot="unsupported" style="color:#ff5252;font-size:13px">Hãy mở trang này bằng Chrome hoặc Edge trên máy tính.</span>
           </esp-web-install-button>
-          <a class="btn-dl" href="firmware/byd_hud_v2_full.bin" download>⬇ Tải file FULL V2</a>
-          <a class="btn-dl" href="firmware/byd_hud_v2_ota.bin" download>⬇ Tải file OTA V2</a>
         </div>
       </div>
     </div>
@@ -160,7 +156,7 @@
       <ol>
         <li>Mở trang web này trên máy tính bằng <b>Google Chrome</b> hoặc <b>Microsoft Edge</b>.</li>
         <li>Cắm cáp <b>USB-C truyền dữ liệu</b> từ máy tính vào màn hình HUD (nếu máy chưa nhận cổng COM, giữ nút BOOT rồi cắm cáp).</li>
-        <li>Chọn đúng bản <b>V1 (SKU 10120005)</b> hoặc <b>V2 (SKU 10120003)</b> theo tem trên hộp rồi bấm <b>NẠP QUA USB</b> → chọn cổng COM ESP32-S3 → Install.</li>
+        <li>Chọn đúng bản <b>V1 (SKU 10120005)</b> hoặc <b>V2 (SKU 10120003)</b> theo tem trên hộp rồi bấm <b>CẬP NHẬT QUA USB</b> → chọn cổng COM ESP32-S3 → Install.</li>
         <li>Chờ nạp xong 100%, HUD sẽ tự khởi động lại với đầy đủ bootloader, phân vùng OTA 16MB và chương trình mới nhất.</li>
       </ol>
     </div>
@@ -197,7 +193,7 @@
     fetch("version.json?t=" + Date.now())
       .then(r => r.json())
       .then(d => {
-        if (d.version) document.getElementById("verBadge").textContent = "BYD HUD ESP32-S3 • Phiên bản v" + d.version;
+        if (d.version) document.getElementById("verBadge").textContent = "BYD HUD ESP32-S3 • v" + d.version;
       })
       .catch(() => {});
   </script>

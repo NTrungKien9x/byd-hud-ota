@@ -1,6 +1,6 @@
 {
-  "version": "1.007",
-  "notes": "v1.007: Ẩn hoàn toàn hàng chờ P R N D khi bật nguồn / chưa có tín hiệu số thực từ OBD trên cả 3 giao diện (Unified, EV Dash, Classic) và tự phóng to số tốc độ; giữ toàn bộ bản vá v1.006",
+  "version": "1.009",
+  "notes": "v1.009: Sửa triệt để lỗi app bản đồ (GOFA/Waze) kết nối vài giây bị tự ngắt khi xe đứng yên (bỏ cắt timeout 8s & bỏ watchdog đuổi peer bản đồ im lặng; chỉ tự reset tức thì khi BLE thực sự ngắt kết nối hoặc Waze gửi bye); giữ trọn bộ sửa OTA v1.008",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

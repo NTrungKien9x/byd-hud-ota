@@ -129,32 +129,26 @@
       <div class="card">
         <h2>Bản V1 — Màn hình đời 2509</h2>
         <div class="sku">SKU: 10120005 (2509) • Driver V1 (216 lệnh)</div>
-        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120005 (2509)</b>. Chọn <b>Cập nhật chỉ App</b> để giữ nguyên WiFi &amp; cài đặt NVS, hoặc <b>Nạp Full</b> cho mạch mới.</p>
+        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120005 (2509)</b>. Nạp <b>Full</b> qua cáp USB-C trên Chrome / Edge, hoặc tải file <b>OTA</b> để cập nhật không xóa cài đặt.</p>
         <div class="btn-row">
-          <esp-web-install-button manifest="manifest_v1_update.json">
-            <button slot="activate" class="btn-flash">🔄 CẬP NHẬT V1 (CHỈ APP — GIỮ CÀI ĐẶT)</button>
+          <esp-web-install-button manifest="manifest_v1.json">
+            <button slot="activate" class="btn-flash">⚡ NẠP FULL BẢN V1 QUA USB</button>
             <span slot="unsupported" style="color:#ff5252;font-size:13px">Hãy mở trang này bằng Chrome hoặc Edge trên máy tính.</span>
           </esp-web-install-button>
-          <esp-web-install-button manifest="manifest_v1.json">
-            <button slot="activate" class="btn-dl">⚡ Nạp Full V1 (lần đầu)</button>
-          </esp-web-install-button>
-          <a class="btn-dl" href="firmware/byd_hud_v1.bin" download>⬇ Tải .bin OTA V1 (chỉ App)</a>
+          <a class="btn-dl" href="firmware/byd_hud_v1_ota.bin" download>⬇ Tải file OTA V1</a>
         </div>
       </div>
 
       <div class="card">
         <h2>Bản V2 — Màn hình đời 2636</h2>
         <div class="sku">SKU: 10120003 (2636) • Driver V2 (184 lệnh)</div>
-        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120003 (2636)</b>. Chọn <b>Cập nhật chỉ App</b> để giữ nguyên WiFi &amp; cài đặt NVS, hoặc <b>Nạp Full</b> cho mạch mới.</p>
+        <p class="desc">Dành cho mạch GUITION JC3636W518C có tem hộp <b>SKU 10120003 (2636)</b>. Nạp <b>Full</b> qua cáp USB-C trên Chrome / Edge, hoặc tải file <b>OTA</b> để cập nhật không xóa cài đặt.</p>
         <div class="btn-row">
-          <esp-web-install-button manifest="manifest_v2_update.json">
-            <button slot="activate" class="btn-flash">🔄 CẬP NHẬT V2 (CHỈ APP — GIỮ CÀI ĐẶT)</button>
+          <esp-web-install-button manifest="manifest_v2.json">
+            <button slot="activate" class="btn-flash">⚡ NẠP FULL BẢN V2 QUA USB</button>
             <span slot="unsupported" style="color:#ff5252;font-size:13px">Hãy mở trang này bằng Chrome hoặc Edge trên máy tính.</span>
           </esp-web-install-button>
-          <esp-web-install-button manifest="manifest_v2.json">
-            <button slot="activate" class="btn-dl">⚡ Nạp Full V2 (lần đầu)</button>
-          </esp-web-install-button>
-          <a class="btn-dl" href="firmware/byd_hud_v2.bin" download>⬇ Tải .bin OTA V2 (chỉ App)</a>
+          <a class="btn-dl" href="firmware/byd_hud_v2_ota.bin" download>⬇ Tải file OTA V2</a>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@
           "offset": 57344
         },
         {
-          "path": "firmware/byd_hud_v1.bin",
+          "path": "firmware/byd_hud_v1_ota.bin",
           "offset": 65536
         }
       ]

@@ -1,6 +1,6 @@
 {
-  "version": "1.011",
-  "notes": "v1.011: Tối ưu toàn diện luồng dữ liệu (bỏ trễ 20ms vòng nghỉ giữa mỗi lệnh OBD -> tốc độ/PRND/xi nhan/AutoHold nhanh hơn ~30%; giảm timeout nối OBD 10s->3.5s tránh khựng HUD; tiết lưu I2C cảm ứng 15ms; giữ mũi tên phân làn/rẽ 45s khi dừng đèn đỏ; chống đếm drop giả trên UART VietMap) + thêm trang Form Test hiển thị trực tiếp (/test) ngay trên Web HUD để kiểm tra mọi mũi tên AR, đèn, xi nhan, AutoHold, xADAS, xe điện/xe xăng chỉ bằng 1 chạm",
+  "version": "1.012",
+  "notes": "v1.012: Sửa triệt để lỗi bấm OTA bị văng khởi động lại ở bước giải phóng RAM — thay cơ chế tắt NimBLE nóng bằng Clean OTA Boot Mode (lưu cờ NVS 1 lần, tự xóa trước khi nối WiFi chống boot-loop, khởi động sạch không bật BLE/Web/UART dư ~220KB Internal DRAM cho HTTPS OTA ăn ngay lần bấm đầu tiên) + rút ngắn thời gian khởi động HUD nhanh hơn 2.75 giây khi bật máy xe",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

@@ -1,6 +1,6 @@
 {
-  "version": "1.009",
-  "notes": "v1.009: Sửa triệt để lỗi app bản đồ (GOFA/Waze) kết nối vài giây bị tự ngắt khi xe đứng yên (bỏ cắt timeout 8s & bỏ watchdog đuổi peer bản đồ im lặng; chỉ tự reset tức thì khi BLE thực sự ngắt kết nối hoặc Waze gửi bye); giữ trọn bộ sửa OTA v1.008",
+  "version": "1.010",
+  "notes": "v1.010: Nâng cấp toàn bộ mũi tên phân làn sang dạng AR-HUD phát sáng cyan-trắng (đồng bộ cả ảnh thanh phân làn VietMap cmd 0x03 ngưỡng w>=120 chuẩn 3in1 và phân làn vector Waze/H50); sửa triệt để lỗi cập nhật OTA HTTP -1 trên HUD bằng cách giải phóng ~100KB Internal DRAM (tắt tạm NimBLE/SoftAP cho mbedTLS), thêm setConnectTimeout(18s), tự fallback DNS 8.8.8.8/1.1.1.1 và hiển thị mã lỗi chi tiết",
   "v1": "firmware/byd_hud_v1.bin",
   "v2": "firmware/byd_hud_v2.bin"
 }

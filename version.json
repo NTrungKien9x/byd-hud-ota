@@ -1,6 +1,6 @@
 {
-  "version": "1.024",
-  "notes": "EV Dash: dua vach chia lon vao trong vong cung toc do, phong to toi da so toc do & bien P.127 (104px duoi toc do khi !OBD, 72px/80px khi OBD); Ngay/Dem: giu vach 10km/h, dua cum xADAS+oto xuong day & phong to mui ten AR 1.42x o dinh; sua 1.9 km & ten duong GOFA, giu BLE khi dung yen, cau noi xADAS Waze Mod 10",
+  "version": "1.025",
+  "notes": "Toi uu +53KB Internal DRAM sang 8MB PSRAM (gBleRxQueue, gVmJpegWork, buffer tinh, STRIPE_MAX=12) -> sua dut diem loi TLS -0x7F00 khi kiem tra/nap OTA truc tiep; giu nguyen toan bo nang cap EV Dash & Ngay/Dem v1.024",
   "v1": "firmware/byd_hud_v1_ota.bin",
   "v2": "firmware/byd_hud_v2_ota.bin"
 }

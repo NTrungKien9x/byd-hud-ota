@@ -1,6 +1,6 @@
 {
-  "version": "1.026",
-  "notes": "Sua dut diem loi phong to qua co icon bien bao dang doc (den giao thong 30x52 -> 42x72, EXIT_HIGHWAY, CAM_BUS/RADAR/LANE/PHONE) trong hudDrawIconScaled -> khong bao gio de len so met va vong cung tren ca 3 giao dien; giu nguyen toi uu RAM PSRAM v1.025",
+  "version": "1.027",
+  "notes": "Sua dut diem loi xADAS tim thay BYD HUD nhung khong ket noi duoc sau khi OBD da ket noi truoc hoac sau khi tat OBD tren ESP32-S3: dung sach BLE ADV truoc ble_gap_connect(), cua so initiator 50%, khoa xung dot Core0/Core1 luc LK_CONNECTING, giai phong sach NimBLEClient (deleteClient) & reset tron ven NimBLEAdvertising khi tat/ngat OBD; bo sung chi tiet BLE peers/adv tren /rx",
   "v1": "firmware/byd_hud_v1_ota.bin",
   "v2": "firmware/byd_hud_v2_ota.bin"
 }

@@ -1,6 +1,6 @@
 {
-  "version": "1.022",
-  "notes": "",
+  "version": "1.023",
+  "notes": "Toc do 0ms tre GPS/OBD; tach luong BLE OBD Core 0 + xADAS Core 1; sua 1.9 km & ten duong GOFA + giu BLE khi dung yen; cau noi xADAS Waze Mod 10; an 100% OBD & phong to bo cuc khi khong noi OBD tren ca 3 giao dien (EV Dash dua P.127 lon xuong duoi toc do); tach P.131a/P.130 & tu tat bien bao VietMap",
   "v1": "firmware/byd_hud_v1_ota.bin",
   "v2": "firmware/byd_hud_v2_ota.bin"
 }

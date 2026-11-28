@@ -1,6 +1,6 @@
 {
-  "version": "1.025",
-  "notes": "Toi uu +53KB Internal DRAM sang 8MB PSRAM (gBleRxQueue, gVmJpegWork, buffer tinh, STRIPE_MAX=12) -> sua dut diem loi TLS -0x7F00 khi kiem tra/nap OTA truc tiep; giu nguyen toan bo nang cap EV Dash & Ngay/Dem v1.024",
+  "version": "1.026",
+  "notes": "Sua dut diem loi phong to qua co icon bien bao dang doc (den giao thong 30x52 -> 42x72, EXIT_HIGHWAY, CAM_BUS/RADAR/LANE/PHONE) trong hudDrawIconScaled -> khong bao gio de len so met va vong cung tren ca 3 giao dien; giu nguyen toi uu RAM PSRAM v1.025",
   "v1": "firmware/byd_hud_v1_ota.bin",
   "v2": "firmware/byd_hud_v2_ota.bin"
 }
